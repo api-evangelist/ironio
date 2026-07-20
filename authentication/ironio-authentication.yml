@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: https://dev.iron.io/worker/reference/api/
+docs: https://dev.iron.io/worker/reference/api/
+summary:
+  types: [oauth2-token]
+  api_key_in: [header, query]
+  oauth2_flows: []
+  notes: >-
+    Iron.io uses a static per-project OAuth token (not a full OAuth2 authorization
+    flow). The token is issued from the Iron.io HUD and works across all Iron.io
+    services (IronMQ, IronWorker, IronCache). Every request also carries a Project ID
+    in the URL path.
+schemes:
+- name: OAuthToken
+  type: http
+  scheme: bearer
+  description: >-
+    Bearer-style token passed in the Authorization header using the "OAuth" scheme:
+    `Authorization: OAuth <TOKEN>`. Tokens are obtained from the HUD and are shared
+    across IronMQ, IronWorker, and IronCache.
+  in: header
+  header_format: 'Authorization: OAuth <TOKEN>'
+  sources: [docs]
+- name: OAuthTokenQuery
+  type: apiKey
+  in: query
+  parameter: oauth
+  description: >-
+    The same token may alternatively be supplied as an `oauth` query-string
+    parameter (documented for IronWorker): `?oauth=<TOKEN>`.
+  sources: [docs]
+project_scoping:
+  required: true
+  location: url-path
+  pattern: /{version}/projects/{Project ID}/...
