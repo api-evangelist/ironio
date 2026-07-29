@@ -1,0 +1,81 @@
+generated: '2026-07-19'
+method: searched
+source: https://dev.iron.io/mq/3/libraries/
+notes: >-
+  Official Iron.io client libraries for the shared IronMQ / IronWorker REST API,
+  published under the iron-io GitHub organization. Registry entries recorded only
+  where a first-party package was verified; otherwise the GitHub repository is the
+  canonical source. Third-party ports are excluded.
+packages:
+- language: go
+  registry: github
+  name: iron_go3
+  url: https://github.com/iron-io/iron_go3
+  install: go get github.com/iron-io/iron_go3
+  official: true
+- language: ruby
+  registry: rubygems
+  name: iron_mq
+  url: https://rubygems.org/gems/iron_mq
+  install: gem install iron_mq
+  official: true
+- language: ruby
+  registry: github
+  name: iron_worker_ruby
+  url: https://github.com/iron-io/iron_worker_ruby
+  install: gem install iron_worker_ng
+  official: true
+- language: python
+  registry: pypi
+  name: iron-mq
+  url: https://pypi.org/project/iron-mq/
+  install: pip install iron-mq
+  official: true
+- language: python
+  registry: github
+  name: iron_worker_python
+  url: https://github.com/iron-io/iron_worker_python
+  install: pip install iron-worker
+  official: true
+- language: php
+  registry: packagist
+  name: iron-io/iron_mq
+  url: https://packagist.org/packages/iron-io/iron_mq
+  install: composer require iron-io/iron_mq
+  official: true
+- language: php
+  registry: github
+  name: iron_worker_php
+  url: https://github.com/iron-io/iron_worker_php
+  install: composer require iron-io/iron_worker
+  official: true
+- language: java
+  registry: github
+  name: iron_mq_java
+  url: https://github.com/iron-io/iron_mq_java
+  install: 'maven: io.iron.ironmq:ironmq'
+  official: true
+- language: javascript
+  registry: npm
+  name: iron_mq
+  url: https://www.npmjs.com/package/iron_mq
+  install: npm install iron_mq
+  official: true
+- language: dotnet
+  registry: github
+  name: iron_dotnet
+  url: https://github.com/iron-io/iron_dotnet
+  install: 'nuget: iron_dotnet (see repo)'
+  official: true
+- language: rust
+  registry: github
+  name: iron_mq_rust
+  url: https://github.com/iron-io/iron_mq_rust
+  install: 'cargo: see repo'
+  official: true
+- language: cli
+  registry: github
+  name: ironcli
+  url: https://github.com/iron-io/ironcli
+  install: 'download binary from releases'
+  official: true

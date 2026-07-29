@@ -1,0 +1,52 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source:
+- https://dev.iron.io/mq/3/reference/api/
+- https://dev.iron.io/worker/reference/api/
+notes: >-
+  Iron.io publishes no hosted/remote MCP server. This is a CANDIDATE tool surface
+  derived from the documented IronMQ v3 and IronWorker REST operations (Iron.io ships
+  no OpenAPI, so tools are grounded in the API reference pages, not operationIds).
+  Not an authoritative provider claim.
+server:
+  name: ironio
+  transport: http
+  url: null
+tools:
+- name: list_queues
+  description: List message queues in a project.
+  source_operation: 'IronMQ v3: GET /queues'
+- name: create_queue
+  description: Create or update a queue.
+  source_operation: 'IronMQ v3: PUT /queues/{Queue Name}'
+- name: get_queue
+  description: Get information about a queue.
+  source_operation: 'IronMQ v3: GET /queues/{Queue Name}'
+- name: delete_queue
+  description: Delete a queue.
+  source_operation: 'IronMQ v3: DELETE /queues/{Queue Name}'
+- name: post_messages
+  description: Post one or more messages to a queue.
+  source_operation: 'IronMQ v3: POST /queues/{Queue Name}/messages'
+- name: reserve_messages
+  description: Reserve (get) messages off a queue with timeout/wait.
+  source_operation: 'IronMQ v3: POST /queues/{Queue Name}/reservations'
+- name: delete_message
+  description: Delete a message from a queue.
+  source_operation: 'IronMQ v3: DELETE /queues/{Queue Name}/messages/{Message ID}'
+- name: add_subscribers
+  description: Add push-queue subscriber endpoints.
+  source_operation: 'IronMQ v3: POST /queues/{Queue Name}/subscribers'
+- name: upload_code
+  description: Upload an IronWorker code package.
+  source_operation: 'IronWorker: POST /projects/{Project ID}/codes'
+- name: queue_task
+  description: Queue an IronWorker task.
+  source_operation: 'IronWorker: POST /projects/{Project ID}/tasks'
+- name: get_task
+  description: Get an IronWorker task status/log.
+  source_operation: 'IronWorker: GET /projects/{Project ID}/tasks/{Task ID}'
+- name: create_schedule
+  description: Create a recurring IronWorker schedule.
+  source_operation: 'IronWorker: POST /projects/{Project ID}/schedules'

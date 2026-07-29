@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: https://dev.iron.io/mq/3/reference/api/
+spec_type: Webhooks
+notes: >-
+  IronMQ is itself an event/messaging surface. It exposes two webhook-style
+  mechanisms rather than a published AsyncAPI document: outbound push-queue delivery
+  to subscriber HTTP endpoints, and an inbound webhook endpoint that ingests external
+  events as queue messages. No AsyncAPI spec is published by Iron.io.
+outbound:
+- name: push-queue-delivery
+  direction: outbound
+  description: >-
+    For push-type queues, IronMQ POSTs each message to every registered subscriber's
+    HTTP(S) endpoint. Delivery status per subscriber is retrievable.
+  manage_subscribers:
+    add: POST /queues/{Queue Name}/subscribers
+    replace: PUT /queues/{Queue Name}/subscribers
+    remove: DELETE /queues/{Queue Name}/subscribers
+  delivery_status: GET /queues/{Queue Name}/messages/{Message ID}/subscribers
+inbound:
+- name: webhook-ingest
+  direction: inbound
+  description: >-
+    Accepts an external provider's webhook POST and enqueues the request body as a
+    new message on the named queue.
+  endpoint: POST /queues/{Queue Name}/webhook
+  auth: OAuth token in query string or Authorization header

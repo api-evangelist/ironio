@@ -1,0 +1,48 @@
+generated: '2026-07-19'
+method: searched
+source:
+- https://dev.iron.io/mq/3/reference/api/
+- https://dev.iron.io/worker/reference/api/
+format: iron-msg
+envelope:
+  field: msg
+  shape: '{"msg": "reason for error"}'
+  problem_json: false
+notes: >-
+  Iron.io returns errors as HTTP status codes with a JSON body carrying a single
+  `msg` field describing the reason. The status codes below are documented across the
+  IronMQ v3 and IronWorker API references; titles/causes are taken from the docs.
+errors:
+- status: 200
+  title: OK
+  meaning: Request succeeded.
+- status: 201
+  title: Created
+  meaning: Resource created successfully (IronMQ).
+- status: 400
+  title: Bad Request
+  meaning: Invalid headers or parameters in the request (IronMQ).
+- status: 401
+  title: Unauthorized
+  meaning: >-
+    Invalid or missing OAuth token; on IronMQ v3 this often means v2 credentials were
+    used against the v3 API.
+- status: 403
+  title: Forbidden / Limit or Timeout
+  meaning: >-
+    IronWorker: account resource limits reached or project suspended. IronMQ: a
+    message reservation timed out.
+- status: 404
+  title: Not Found
+  meaning: The requested resource (queue, message, task, code, schedule) does not exist.
+- status: 405
+  title: Method Not Allowed
+  meaning: Unsupported HTTP method for the endpoint (IronWorker).
+- status: 406
+  title: Not Acceptable
+  meaning: Required fields are missing from the request (IronWorker).
+- status: 503
+  title: Service Unavailable
+  meaning: >-
+    Server temporarily unavailable; clients should retry with exponential backoff
+    (IronWorker).

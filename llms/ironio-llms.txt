@@ -1,0 +1,48 @@
+# Iron.io
+
+> Iron.io provides hosted serverless infrastructure for background processing and asynchronous messaging. Its flagship products are IronMQ (a high-performance hosted message queue with pull and push queues, subscribers, and long-polling), IronWorker (a container-based, multi-language work-on-demand platform for background jobs and scheduled tasks), and IronCache (a hosted key/value store). All services share one REST/HTTP API authenticated with a per-project OAuth token from the Iron.io HUD.
+
+## APIs
+
+- [IronMQ v3](https://dev.iron.io/mq/3/): High-performance hosted message queue — post/reserve/delete messages, push queues, subscribers, webhook ingestion. Base: https://mq-aws-us-east-1-1.iron.io/3
+- [IronWorker](https://dev.iron.io/worker/): Container-based worker platform — upload code, queue tasks, schedule jobs, pull logs/stats. Base: https://worker-aws-us-east-1.iron.io/2
+
+## Docs
+
+- [Developer Center](https://dev.iron.io/)
+- [IronMQ v3 API Reference](https://dev.iron.io/mq/3/reference/api/)
+- [IronWorker API Reference](https://dev.iron.io/worker/reference/api/)
+- [Getting Started with IronWorker](https://dev.iron.io/worker/getting_started/)
+- [IronMQ Client Libraries](https://dev.iron.io/mq/3/libraries/)
+- [FAQ](https://dev.iron.io/faq/)
+
+## Authentication
+
+- Per-project OAuth token in the Authorization header: `Authorization: OAuth <TOKEN>` (or `?oauth=<TOKEN>` query param). Token obtained from the HUD; shared across IronMQ, IronWorker, and IronCache. See authentication/ironio-authentication.yml
+
+## SDKs
+
+- [Official client libraries](https://dev.iron.io/mq/3/libraries/): Go, Ruby, Python, PHP, Java, Node.js, .NET, Rust — see packages/ironio-packages.yml
+- [ironcli (CLI)](https://github.com/iron-io/ironcli)
+
+## Artifacts (API Evangelist enrichment)
+
+- Packages/SDKs: packages/ironio-packages.yml
+- Authentication: authentication/ironio-authentication.yml
+- Conventions: conventions/ironio-conventions.yml
+- Error codes: errors/ironio-error-codes.yml
+- Lifecycle: lifecycle/ironio-lifecycle.yml
+- Conformance: conformance/ironio-conformance.yml
+- Data model: data-model/ironio-data-model.yml
+- Webhooks/events: asyncapi/ironio-webhooks.yml
+- MCP (candidate): mcp/ironio-mcp.yml
+
+## Optional
+
+- [Blog](https://blog.iron.io/)
+- [Status](https://status.iron.io/)
+- [Pricing](https://try.iron.io/pricing-worker-monthly/)
+- [GitHub](https://github.com/iron-io)
+- [Sign Up](https://hud-e.iron.io/signup)
+- [Terms](https://www.iron.io/terms)
+- [Privacy](https://www.iron.io/privacy)

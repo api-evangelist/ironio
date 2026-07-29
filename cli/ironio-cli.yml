@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/iron-io/ironcli
+name: iron
+repository: https://github.com/iron-io/ironcli
+description: >-
+  The official Iron.io command-line tool (`iron`) for working with IronWorker and
+  IronMQ from the terminal — uploading and running worker code packages, queuing and
+  registering Docker-based workers, and managing configuration/credentials.
+binary_in_packages: packages/ironio-packages.yml
+install:
+- method: binary
+  description: Download a prebuilt binary from the ironcli GitHub releases.
+  url: https://github.com/iron-io/ironcli/releases
+- method: source
+  description: Build from source (Go).
+  command: go get github.com/iron-io/ironcli
+config:
+  file: iron.json
+  env:
+  - IRON_TOKEN
+  - IRON_PROJECT_ID
+  notes: Reads the shared Iron.io OAuth token and Project ID.
+commands:
+- group: worker
+  commands:
+  - register: Register a Docker image as a worker.
+  - upload: Upload a code package / worker.
+  - queue: Queue a task for a worker.
+  - schedule: Schedule a recurring task.
+  - status: Get the status of a task.
+  - log: Retrieve a task's log.
+- group: mq
+  commands:
+  - push: Push a message onto a queue.
+  - reserve: Reserve (get) messages from a queue.
+  - delete: Delete a message from a queue.
+  - clear: Clear a queue.
+notes: >-
+  Command surface summarized from the ironcli repository; refer to `iron --help` and
+  the repo README for the authoritative, current flag set.

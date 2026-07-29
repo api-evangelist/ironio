@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: searched
+source: https://dev.iron.io/mq/3/reference/api/
+docs:
+- https://dev.iron.io/mq/3/reference/api/
+- https://dev.iron.io/worker/reference/api/
+authentication:
+  style: oauth-token
+  header: 'Authorization: OAuth <TOKEN>'
+  query_alt: '?oauth=<TOKEN>'
+  project_scoped: true
+  ref: authentication/ironio-authentication.yml
+content_type:
+  request: application/json
+  response: application/json
+  required: true
+idempotency:
+  supported: false
+  notes: >-
+    Iron.io does not document an idempotency-key header. Message-queue semantics are
+    at-least-once; de-duplication is the consumer's responsibility. IronMQ message
+    reservations (with reservation IDs) provide the delivery-control primitive rather
+    than request idempotency.
+pagination:
+  style: cursor
+  params:
+  - name: per_page
+    description: Maximum number of items to return per page.
+  - name: previous
+    description: >-
+      The name/id of the last item from the previous page; results continue after it
+      (alphabetical for queues).
+  - name: prefix
+    description: Filter queues by name prefix (queue listing).
+  notes: Cursor/marker-based paging; no total-count or page-number fields.
+versioning:
+  style: uri-path
+  ironmq_current: v3
+  ironworker_current: v2
+  ref: lifecycle/ironio-lifecycle.yml
+error_envelope:
+  format: iron-msg
+  shape: '{"msg": "reason for error"}'
+  problem_json: false
+  ref: errors/ironio-error-codes.yml
+rate_limiting:
+  documented: false
+  notes: >-
+    No rate-limit headers or quotas are documented in the public API reference;
+    HTTP 403 is returned on account/resource limits and 503 signals server
+    unavailability with a recommendation to use exponential backoff.
+webhooks:
+  supported: true
+  notes: >-
+    IronMQ push queues deliver messages to subscriber HTTP endpoints, and a
+    dedicated POST /queues/{Queue}/webhook endpoint ingests external webhook events
+    as messages.
+  ref: asyncapi/ironio-webhooks.yml

@@ -1,0 +1,78 @@
+generated: '2026-07-19'
+method: derived
+source:
+- https://dev.iron.io/mq/3/reference/api/
+- https://dev.iron.io/worker/reference/api/
+notes: >-
+  Entity-relationship graph derived from the documented IronMQ v3 and IronWorker REST
+  resource hierarchies (Iron.io publishes no OpenAPI). All resources are scoped to a
+  Project, which owns the OAuth token.
+entities:
+- name: Project
+  domain: account
+  description: Top-level container; owns the OAuth token and all queues, codes, and tasks.
+  id_field: Project ID
+- name: Queue
+  domain: ironmq
+  description: A named IronMQ message queue (pull or push).
+  id_field: Queue Name
+  relationships:
+  - type: belongs_to
+    target: Project
+    via: Project ID
+  - type: has_many
+    target: Message
+  - type: has_many
+    target: Subscriber
+- name: Message
+  domain: ironmq
+  description: An individual message posted to a queue.
+  id_field: Message ID
+  relationships:
+  - type: belongs_to
+    target: Queue
+    via: Queue Name
+  - type: has_many
+    target: Reservation
+- name: Reservation
+  domain: ironmq
+  description: A held/reserved message with a reservation id and timeout for at-least-once processing.
+  relationships:
+  - type: belongs_to
+    target: Message
+    via: Message ID
+- name: Subscriber
+  domain: ironmq
+  description: A push-queue subscriber HTTP endpoint that messages are delivered to.
+  relationships:
+  - type: belongs_to
+    target: Queue
+    via: Queue Name
+- name: Code
+  domain: ironworker
+  description: An uploaded IronWorker code package (container/worker) that tasks execute.
+  id_field: Code ID
+  relationships:
+  - type: belongs_to
+    target: Project
+    via: Project ID
+  - type: has_many
+    target: Task
+  - type: has_many
+    target: Schedule
+- name: Task
+  domain: ironworker
+  description: A queued execution of a code package.
+  id_field: Task ID
+  relationships:
+  - type: belongs_to
+    target: Code
+    via: Code ID
+- name: Schedule
+  domain: ironworker
+  description: A recurring schedule that enqueues tasks for a code package.
+  id_field: Schedule ID
+  relationships:
+  - type: belongs_to
+    target: Code
+    via: Code ID

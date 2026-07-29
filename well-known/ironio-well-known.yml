@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: searched
+notes: >-
+  Probed the standard /.well-known/ discovery surface on the Iron.io website, docs
+  host, and an IronMQ regional API host. None returned 200 — recorded here for
+  auditability. No WellKnown/SecurityTxt pointer is wired because nothing was found.
+hosts:
+- host: https://www.iron.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+- host: https://dev.iron.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/llms.txt, status: 404}
+- host: https://mq-aws-us-east-1-1.iron.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}

@@ -1,0 +1,30 @@
+generated: '2026-07-19'
+method: searched
+source:
+- https://dev.iron.io/mq/3/
+- https://dev.iron.io/worker/reference/api/
+- https://status.iron.io/
+versioning:
+  scheme: uri-path
+  services:
+  - product: IronMQ
+    current: v3
+    path_prefix: /3
+    docs: https://dev.iron.io/mq/3/
+  - product: IronWorker
+    current: v2
+    path_prefix: /2
+    docs: https://dev.iron.io/worker/reference/api/
+  notes: >-
+    Version is pinned in the URL path. IronMQ v3 supersedes v2; the docs note that
+    v2 credentials rejected against v3 return HTTP 401.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/sunset policy or RFC 8594 header support is documented.
+sla:
+  url: null
+  uptime_target: null
+  notes: No public SLA/uptime target published on the developer site.
+status_page: https://status.iron.io/
+deprecated_operations: []

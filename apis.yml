@@ -1,8 +1,12 @@
 aid: ironio
 name: Iron.io
-description: 'Iron.io is a company surfaced as a portfolio company of sapphire-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: infrastructure. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Iron.io provides hosted serverless infrastructure for background processing and asynchronous
+  messaging. Its flagship products are IronMQ, a high-performance hosted message queue for passing messages
+  and events between processes and systems with support for push queues, subscribers, and long-polling;
+  IronWorker, a container-based, multi-language, work-on-demand platform for running background jobs and
+  scheduled tasks at scale; and IronCache, a hosted key/value store. All services share a single REST/HTTP
+  API authenticated with per-project OAuth tokens obtained from the Iron.io HUD, and a broad set of official
+  client libraries across Go, Ruby, Python, PHP, Java, Node.js, .NET, and Rust.'
 url: https://raw.githubusercontent.com/api-evangelist/ironio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +14,131 @@ x-backed-by:
 - sapphire-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://www.iron.io/images/logo.svg
 tags:
 - Company
 - Infrastructure
-apis: []
+- Message Queue
+- Serverless
+- Background Jobs
+- Task Processing
+- Cache
+- Messaging
+apis:
+- name: IronMQ v3
+  description: 'IronMQ is a high-performance hosted message queue that lets you pass messages and events
+    between processes and systems. The v3 REST API supports pull and push queues, subscribers, message
+    reservations with long-polling, batch operations, and webhook ingestion, authenticated with per-project
+    OAuth tokens.'
+  humanURL: https://dev.iron.io/mq/3/
+  baseURL: https://mq-aws-us-east-1-1.iron.io/3
+  tags:
+  - Message Queue
+  - Messaging
+  - Push Queues
+  - Events
+  properties:
+  - type: Documentation
+    url: https://dev.iron.io/mq/3/
+  - type: APIReference
+    url: https://dev.iron.io/mq/3/reference/api/
+  - type: GettingStarted
+    url: https://dev.iron.io/mq/3/
+- name: IronWorker
+  description: 'IronWorker is a container-based, massively parallel, multi-language work-on-demand platform.
+    The REST API lets you upload code packages, queue and manage tasks, schedule recurring jobs, and pull
+    stats and logs, authenticated with per-project OAuth tokens.'
+  humanURL: https://dev.iron.io/worker/
+  baseURL: https://worker-aws-us-east-1.iron.io/2
+  tags:
+  - Background Jobs
+  - Task Processing
+  - Serverless
+  - Containers
+  properties:
+  - type: Documentation
+    url: https://dev.iron.io/worker/
+  - type: APIReference
+    url: https://dev.iron.io/worker/reference/api/
+  - type: GettingStarted
+    url: https://dev.iron.io/worker/getting_started/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/ironio-trust-center.yml
+- type: DomainSecurity
+  url: security/ironio-domain-security.yml
 - type: Website
   url: https://www.iron.io/
+- type: DeveloperPortal
+  url: https://dev.iron.io/
+- type: Documentation
+  url: https://dev.iron.io/
+- type: GettingStarted
+  url: https://dev.iron.io/worker/getting_started/
+- type: Blog
+  url: https://blog.iron.io/
+- type: GitHubOrganization
+  url: https://github.com/iron-io
+- type: Support
+  url: https://support.iron.io/
+- type: StatusPage
+  url: https://status.iron.io/
+- type: Pricing
+  url: https://try.iron.io/pricing-worker-monthly/
+- type: SignUp
+  url: https://hud-e.iron.io/signup
+- type: Login
+  url: https://hud-e.iron.io/signin
+- type: TermsOfService
+  url: https://www.iron.io/terms
+- type: PrivacyPolicy
+  url: https://www.iron.io/privacy
+- type: Packages
+  url: packages/ironio-packages.yml
+- type: SDKs
+  url: packages/ironio-packages.yml
+- type: CLI
+  url: cli/ironio-cli.yml
+- type: Authentication
+  url: authentication/ironio-authentication.yml
+- type: Conventions
+  url: conventions/ironio-conventions.yml
+- type: ErrorCatalog
+  url: errors/ironio-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/ironio-lifecycle.yml
+- type: Conformance
+  url: conformance/ironio-conformance.yml
+- type: DataModel
+  url: data-model/ironio-data-model.yml
+- type: Webhooks
+  url: asyncapi/ironio-webhooks.yml
+- type: MCPServer
+  url: mcp/ironio-mcp.yml
+- type: LLMsTxt
+  url: llms/ironio-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
