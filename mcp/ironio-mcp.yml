@@ -4,11 +4,9 @@ status: candidate
 source:
 - https://dev.iron.io/mq/3/reference/api/
 - https://dev.iron.io/worker/reference/api/
-notes: >-
-  Iron.io publishes no hosted/remote MCP server. This is a CANDIDATE tool surface
-  derived from the documented IronMQ v3 and IronWorker REST operations (Iron.io ships
-  no OpenAPI, so tools are grounded in the API reference pages, not operationIds).
-  Not an authoritative provider claim.
+notes: Iron.io publishes no hosted/remote MCP server. This is a CANDIDATE tool surface derived from the
+  documented IronMQ v3 and IronWorker REST operations (Iron.io ships no OpenAPI, so tools are grounded
+  in the API reference pages, not operationIds). Not an authoritative provider claim.
 server:
   name: ironio
   transport: http
@@ -50,3 +48,9 @@ tools:
 - name: create_schedule
   description: Create a recurring IronWorker schedule.
   source_operation: 'IronWorker: POST /projects/{Project ID}/schedules'
+deployment:
+  mode: none
+  verified: derived
+  tools: 12
+  checked: '2026-08-12'
+  source: catalog MCP census
