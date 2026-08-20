@@ -51,6 +51,11 @@ apis:
   - Message Queue
   - Messaging
   - Push Queues
+  - Event
+  tags_raw:
+  - Message Queue
+  - Messaging
+  - Push Queues
   - Events
   properties:
   - type: Documentation
